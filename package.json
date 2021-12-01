@@ -1,0 +1,73 @@
+{
+  "name": "untilted",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "ivandotv",
+  "license": "MIT",
+  "main": "./dist/prod/untilted.js",
+  "umd": "./dist/prod/untilted.umd.js",
+  "exports": {
+    "development": "./dist/dev/untilted.esm.js",
+    "import": "./dist/prod/untilted.esm.js",
+    "require": "./dist/prod/untilted.js"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "lint": "eslint --fix \"src/**/\"",
+    "lint:check": "eslint \"src/**/\"",
+    "lint:ci": "pnpm lint:check && pnpm format:check",
+    "format": "prettier --write src/**",
+    "format:check": "prettier --check src/**",
+    "test": "cross-env NODE_ENV=test jest --verbose --coverage --no-cache",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:ci": "cross-env NODE_ENV=test jest --runInBand --ci --coverage --coverageDirectory=coverage",
+    "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod",
+    "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev",
+    "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
+    "type:check": "tsc --noEmit true",
+    "gen:docs": "rm -rf ./docs/api && typedoc --theme markdown --readme none --excludePrivate  --excludeInternal --exclude ./src/globals.d.ts --exclude ./src/__tests__ --out docs/api ./src",
+    "prepublishOnly": "pnpm build",
+    "prepare": "husky install",
+    "release": "pnpm run prepublishOnly && pnpm changeset publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivandotv/untilted.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivandotv/untilted/issues"
+  },
+  "homepage": "https://github.com/ivandotv/untilted#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.16.0",
+    "@changesets/cli": "^2.18.1",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "babel-plugin-dev-expression": "^0.2.3",
+    "babel-plugin-transform-define": "^2.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "jest-mock-console": "^1.2.3",
+    "jest-watch-typeahead": "^1.0.0",
+    "lint-staged": "^12.1.2",
+    "microbundle": "^0.14.2",
+    "prettier": "^2.5.0",
+    "shx": "^0.3.3",
+    "typedoc": "^0.22.10",
+    "typedoc-plugin-markdown": "^3.11.7",
+    "xstate": "^4.26.1"
+  }
+}

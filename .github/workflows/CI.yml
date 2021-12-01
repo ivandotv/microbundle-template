@@ -1,0 +1,78 @@
+name: Test
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Node unit tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12', '14', '16']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache .pnpm-store
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint source
+        run: |
+          pnpm lint:ci
+
+      - name: Check types
+        run: |
+          pnpm type:check
+
+      - name: Run tests
+        run: |
+          pnpm test:ci
+        env:
+          CI: true
+
+      - name: Generate Code Coverage
+        # only when running in node v16
+        if: matrix.node == 16
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: 'Publish to NPM'
+        if: github.event_name == 'push' && github.repository == 'ivandotv/dumba' && matrix.node == 16 && github.ref == 'refs/heads/master'
+        uses: changesets/action@master
+        id: 'changesets'
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: pnpm release
+          commit: version bump
+          title: Next release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 'Generate docs'
+        if: steps.changesets.outputs.published == 'true'
+        run: pnpm gen:docs
+
+      - name: Commit docs
+        if: steps.changesets.outputs.published == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Generate docs'
