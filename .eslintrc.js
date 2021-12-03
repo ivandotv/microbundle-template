@@ -33,7 +33,7 @@ module.exports = {
   rules: {
     'tsdoc/syntax': 'warn',
     // 'no-unused-vars': 'off',
-    // '@typescript-eslint/no-unused-vars': ['off']
+    '@typescript-eslint/no-unused-vars': ['off', { argsIgnorePattern: '^_' }],
     'generator-star-spacing': ['error', { before: false, after: true }],
     'space-before-function-paren': 'off',
     'no-dupe-class-members': 'off',
