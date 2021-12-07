@@ -55,9 +55,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: 'Publish to NPM'
+      - name: 'Consume changesets'
         if: github.event_name == 'push' && github.repository == 'ivandotv/dumba' && matrix.node == 16 && github.ref == 'refs/heads/master'
-        uses: changesets/action@master
+        uses: changesets/action@v1
         id: 'changesets'
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
