@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - master
+      - develop
 jobs:
   build:
     name: Node unit tests
@@ -28,19 +29,19 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install pnpm
-        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
-
       - name: Install dependencies
-        run: pnpm install
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.23.6
+          run_install: true
 
       - name: Lint source
         run: |
           pnpm lint:ci
 
-      - name: Check types
+      - name: Build package
         run: |
-          pnpm type:check
+          pnpm build
 
       - name: Run tests
         run: |
