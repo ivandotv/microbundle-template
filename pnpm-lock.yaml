@@ -25,7 +25,6 @@ specifiers:
   shx: ^0.3.3
   typedoc: ^0.22.10
   typedoc-plugin-markdown: ^3.11.7
-  xstate: ^4.26.1
 
 devDependencies:
   '@babel/preset-typescript': 7.16.0
@@ -52,7 +51,6 @@ devDependencies:
   shx: 0.3.3
   typedoc: 0.22.10
   typedoc-plugin-markdown: 3.11.7_typedoc@0.22.10
-  xstate: 4.26.1
 
 packages:
 
@@ -7290,10 +7288,6 @@ packages:
 
   /xmlchars/2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
-    dev: true
-
-  /xstate/4.26.1:
-    resolution: {integrity: sha512-JLofAEnN26l/1vbODgsDa+Phqa61PwDlxWu8+2pK+YbXf+y9pQSDLRvcYH2H1kkeUBA5fGp+xFL/zfE8jNMw4g==}
     dev: true
 
   /y18n/4.0.3:
