@@ -29,7 +29,6 @@
     "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod",
     "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev",
     "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
-    "type:check": "tsc --noEmit true",
     "gen:docs": "rm -rf ./docs/api && typedoc --theme markdown --readme none --excludePrivate  --excludeInternal --exclude ./src/globals.d.ts --exclude ./src/__tests__ --out docs/api ./src",
     "prepublishOnly": "pnpm build",
     "prepare": "husky install",
