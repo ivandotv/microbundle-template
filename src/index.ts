@@ -17,6 +17,6 @@ export function demo(): void {
 }
 demo()
 
-export function demo2(): void {
+export function demo3(): void {
   console.log(__VERSION__)
 }
