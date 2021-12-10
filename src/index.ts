@@ -16,3 +16,5 @@ export function demo(): void {
   console.log(__VERSION__)
 }
 demo()
+
+function demo2() {}
