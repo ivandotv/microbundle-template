@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "../",
-    "paths": {
-      "~/*": ["*"]
-    }
+    "baseUrl": "../"
+    // "paths": {
+    //   "~/*": ["*"]
+    // }
   },
   "extends": "../../tsconfig.json",
   "include": ["../**/*"],
