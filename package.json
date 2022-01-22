@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "private": true,
-  "author": "ivandotv",
+  "author": "your-username",
   "license": "MIT",
   "main": "./dist/prod/untilted.js",
   "umd": "./dist/prod/untilted.umd.js",
@@ -37,12 +37,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ivandotv/untilted.git"
+    "url": "git+https://github.com/your-username/untilted.git"
   },
   "bugs": {
-    "url": "https://github.com/ivandotv/untilted/issues"
+    "url": "https://github.com/your-username/untilted/issues"
   },
-  "homepage": "https://github.com/ivandotv/untilted#readme",
+  "homepage": "https://github.com/your-username/untilted#readme",
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "@changesets/cli": "^2.19.0",
