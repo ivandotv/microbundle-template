@@ -30,7 +30,7 @@ This repository is actively maintained and as new versions of tools are being re
 
 ## Getting Started
 
-You can immediately create your repo by clicking on the `Use this template button` in the Github page UI. Or you can use [deGit](https://github.com/Rich-Harris/degit) which is a very convenient tool to quickly download the repository (without git clone) `degit https://github.com/ivandotv/node-module-typescript`
+You can immediately create your repo by clicking on the `Use this template button` in the Github page UI. Or you can use [deGit](https://github.com/Rich-Harris/degit) which is a very convenient tool to quickly download the repository (without git clone) `degit https://github.com/ivandotv/microbundle-template`
 
 ## Compiling Typescript via Microbundle
 
