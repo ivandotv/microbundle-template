@@ -1,6 +1,6 @@
 # Microbundle Typescript Starter Template
 
-Opinionated template repository for creating Javascript libraries with Typescript, Microbundle, and Jest.
+Opinionated template repository for creating Javascript libraries with Typescript, Microbundle, Jest, and a bunch of other tools.
 
 <!-- toc -->
 
@@ -11,7 +11,7 @@ Opinionated template repository for creating Javascript libraries with Typescrip
 - [Testing via Jest](#testing-via-jest)
 - [Linting via ESLint](#linting-via-eslint)
 - [Formatting code via Prettier](#formatting-code-via-prettier)
-- [Continous Integration](#continous-integration)
+- [Continuous Integration](#continuous-integration)
 - [Git Hooks](#git-hooks)
 - [Debugging](#debugging)
 - [Managing versions via changesets](#managing-versions-via-changesets)
@@ -24,7 +24,7 @@ Opinionated template repository for creating Javascript libraries with Typescrip
 
 ## Motivation
 
-Setting up a modern Typescript or Javascript development stack is a daunting task, there are a lot of moving parts, and sometimes the whole process seems like magic. I've maintained my own [babel configuration, and build process]() but I was getting tiresome to maintain, so I switched to [microbundle](https://github.com/developit/microbundle). While microbundle handles the compilation, there are a lot of other moving parts that need to be set up to start developing with Nodejs/Typescript (CI, test, etc).
+Setting up a modern Typescript or Javascript development stack is a daunting task, there are a lot of moving parts, and sometimes the whole process seems like magic. I've maintained my babel configuration, and build process but it was getting tiresome to maintain, so I switched to [microbundle](https://github.com/developit/microbundle). While microbundle handles the compilation, there are a lot of other moving parts that need to be set up to start developing with Nodejs/Typescript (CI, test, etc).
 
 This repository is actively maintained and as new versions of tools are being released it is updated and modified accordingly.
 
@@ -115,7 +115,7 @@ You can run ESLint via `lint` and `lint:check` scripts.
 
 Prettier is set up not to conflict with `eslint`. You can run prettier via `format` and `format:check` scripts.
 
-## Continous Integration
+## Continuous Integration
 
 Github actions are used for continuous integration and testing.
 Github action name is `Test` and this is what it does:
