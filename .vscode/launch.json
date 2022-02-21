@@ -23,6 +23,9 @@
       "cwd": "${workspaceRoot}",
       // "program": "${workspaceFolder}/node_modules/.bin/jest",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest.js", //pnpm fix
+      "env": {
+        "JEST_DEBUG": "true"
+      },
       "args": [
         "${relativeFile}",
         "--no-cache",
