@@ -24,6 +24,7 @@ module.exports = {
     'prettier'
   ],
   parser: '@typescript-eslint/parser',
+  reportUnusedDisableDirectives: true,
   parserOptions: {
     /* enabling "project" field is a performance hit
       https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/TYPED_LINTING.md#performance
