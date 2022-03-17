@@ -1,4 +1,4 @@
-import { demo } from '~/index'
+import { demo } from '../index'
 
 describe('Test', () => {
   test('Demo Test', () => {
