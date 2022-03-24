@@ -11,6 +11,7 @@
       "program": "${workspaceFolder}/src/index.ts",
       // "preLaunchTask": "npm: build:cjs",
       "outFiles": ["${workspaceFolder}/dist/cjs/**/*.js"],
+      "smartStep": true,
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
         "<node_internals>/**/*.js"
@@ -36,6 +37,7 @@
       "protocol": "inspector",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
+      "smartStep": true,
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
         "<node_internals>/**/*.js"
