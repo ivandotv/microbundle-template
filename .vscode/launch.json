@@ -18,26 +18,24 @@
       ]
     },
     {
-      "name": "Current test file",
+      "name": "Current Test File",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
-      // "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest.js", //pnpm fix
-      "env": {
-        "JEST_DEBUG": "true"
-      },
-      "args": [
-        "${relativeFile}",
+      "cwd": "${workspaceFolder}/${relativeFileDirname}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "jest",
+        "${file}",
         "--no-cache",
         "--watchAll=false",
         "--runInBand"
       ],
+      "env": { "JEST_DEBUG": "true" },
       "console": "integratedTerminal",
       "protocol": "inspector",
       "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true,
       "smartStep": true,
+      "disableOptimisticBPs": true,
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
         "<node_internals>/**/*.js"
