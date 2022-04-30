@@ -29,4 +29,4 @@ Nothing!
 
 #### Defined in
 
-[index.ts:12](https://github.com/ivandotv/microbundle-template/blob/dffd33e/src/index.ts#L12)
+[index.ts:12](https://github.com/ivandotv/microbundle-template/blob/56ba4dd/src/index.ts#L12)
