@@ -4,7 +4,6 @@
  * @remarks
  * Read more about TSDoc at: {@link https://github.com/microsoft/tsdoc}
  *
- * @param name - Demo name
  * @returns Nothing!
  *
  * @beta
