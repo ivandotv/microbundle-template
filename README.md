@@ -19,6 +19,7 @@ Opinionated template repository for creating Javascript libraries with Typescrip
 - [Renovate Bot](#renovate-bot)
 - [Publishing to NPM](#publishing-to-npm)
 - [Package manager](#package-manager)
+- [VSCode Dev Container](#vscode-dev-container)
 
 <!-- tocstop -->
 
@@ -170,3 +171,7 @@ Manual publishing is done via `pnpm release` this task will go through regular N
 ## Package manager
 
 [pnpm](https://pnpm.io) is my package manager of choice. You can use something else, just make sure to update the scripts in package.json and change any references to pnpm.
+
+## VSCode Dev Container
+
+There is a vscode dev container setup that uses `Node v16`, github cli, and docker in docker. It also automatically installs `pnpm` in the container, and sets `git` to automatically sings the commits.
