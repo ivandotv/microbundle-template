@@ -1,6 +1,6 @@
 # Microbundle Typescript Starter Template
 
-Opinionated template repository for creating Javascript libraries with Typescript, Microbundle, Jest, and a bunch of other tools.
+Opinionated template repository for creating Javascript libraries with Typescript, Microbundle, Vitest, Biome, and a bunch of other tools.
 
 <!-- toc -->
 
@@ -8,9 +8,8 @@ Opinionated template repository for creating Javascript libraries with Typescrip
 - [Getting Started](#getting-started)
 - [Compiling Typescript via Microbundle](#compiling-typescript-via-microbundle)
 - [Development code](#development-code)
-- [Testing via Jest](#testing-via-jest)
-- [Linting via ESLint](#linting-via-eslint)
-- [Formatting code via Prettier](#formatting-code-via-prettier)
+- [Testing via Vitest](#testing-via-vitest)
+- [Linting and Formatting code via Biome](#linting-via-biome)
 - [Continuous Integration](#continuous-integration)
 - [Git Hooks](#git-hooks)
 - [Debugging](#debugging)
@@ -80,41 +79,18 @@ There are also some other expressions that you can use:
 - `__COMMIT_SHA__` is replaced with the short version of the git commit SHA from the HEAD.
 - `__BUILD_DATE__` is replaced with the date of the commit from the HEAD.
 
-## Testing via Jest
+## Testing via Vitest
 
-Jest is used for testing. You can write your tests in Typescript and they will be compiled via babel targeting the nodejs version that is running the tests. The testing environment is set to `node` you might want to change that if you need access to `DOM` in your tests (use `jsdom`).
-I think there is no faster way to run typescript tests in jest. :)
-
-The coverage threshold is set to `80%` globally.
-
-One plugin is added to jest:
-
-- `jest-watch-typeahead` (for filtering tests by file name or test name)
+Vitest is used for testing. You can write your tests in Typescript and they will be compiled via babel targeting the nodejs version that is running the tests. The testing environment is set to `node` you might want to change that if you need access to `DOM` in your tests (use `jsdom`).
 
 There are three tasks for running tests:
 
 - `test` run all test and report code coverage
-- `test:ci` is the same as `test` only optimized for CI (will not run in parallel)
 - `test:watch` continuously run tests by watching some or all files
 
-## Linting via ESLint
+## Linting via Biome
 
--ESLint is set up with a few plugins:
-
-- `@typescript-eslint/eslint-plugin` for linting Typescript.
-- `eslint-plugin-jest` for linting Jest test files
-- `eslint-plugin-prettier` for prettier integration
-- `eslint-plugin-promise` for linting promises
-- `eslint-plugin-tsdoc` for linting TypeScript doc comments conform to the TSDoc specification.
-- There are a few overrides that I think are common sense. You can see the overrides inside the [.eslintrc.js](.eslintrc.js) file.
-
-You can also remove all the plugins that you don't need.
-
-You can run ESLint via `lint` and `lint:check` scripts.
-
-## Formatting code via Prettier
-
-Prettier is set up not to conflict with `eslint`. You can run prettier via `format` and `format:check` scripts.
+- [Biome.js](https://biomejs.dev/) is used for linting and formatting.
 
 ## Continuous Integration
 
@@ -123,7 +99,7 @@ Github action name is `Test` and this is what it does:
 
 - run on `push` to all branches
 - run on `pull request` to `main` and `develop` branches
-- run tests on node versions 12,14,16
+- run tests on node versions [21]
 - lint source
 - build source
 - run tests
@@ -137,7 +113,7 @@ Github action name is `Test` and this is what it does:
 
 ## Git Hooks
 
-There is one git hook setup via [husky](https://www.npmjs.com/package/husky) package in combination with [lint-staged](https://www.npmjs.com/package/lint-staged). Before committing the files all staged files will be run through ESLint and Prettier.
+- [Lefthook](https://github.com/evilmartians/lefthook) is used for checking code before it is commited
 
 ## Debugging
 
