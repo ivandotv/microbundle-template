@@ -7,15 +7,21 @@
   "author": "your-username",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/prod/index.cjs",
-  "module": "./dist/prod/index.modern.js",
-  "umd:main": "./dist/prod/index.umd.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "require": "./dist/prod/index.cjs",
-    "development": "./dist/dev/index.modern.js",
-    "default": "./dist/prod/index.modern.js"
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
   },
-  "types": "./dist/types/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -26,9 +32,8 @@
     "check:ci": "biome check ./src --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod/index.js",
-    "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev/index.js",
-    "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
+    "build": "shx rm -rf ./dist && NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs  --output dist/index.js && shx cp  ./dist/index.d.ts ./dist/index.d.cts",
+    "type:check": "tsc --noEmit",
     "gen:docs": "rm -rf ./docs/api && typedoc --options typedoc.cjs",
     "prepublishOnly": "pnpm build",
     "prepare": "lefthook install",
@@ -49,15 +54,16 @@
     "@biomejs/biome": "1.5.3",
     "@changesets/cli": "^2.27.1",
     "@types/node": "^20.11.24",
+    "@vitest/coverage-v8": "^1.3.1",
     "babel-plugin-dev-expression": "^0.2.3",
     "babel-plugin-transform-define": "^2.1.4",
-    "cross-env": "^7.0.3",
     "lefthook": "^1.6.5",
     "microbundle": "^0.15.1",
     "shx": "^0.3.4",
     "typedoc": "^0.25.11",
     "typedoc-plugin-markdown": "^3.17.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite-plugin-babel": "^1.2.0"
   },
   "dependencies": {
     "vitest": "^1.3.1"
