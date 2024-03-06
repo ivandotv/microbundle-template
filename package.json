@@ -21,12 +21,11 @@
     "src"
   ],
   "scripts": {
-    "lint": "eslint --fix \"src/**/\"",
-    "lint:check": "eslint \"src/**/\"",
-    "lint:ci": "pnpm lint:check",
+    "lint": "biome lint ./src",
+    "check": "biome check ./src --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "check:ci": "biome check ./src --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --watch",
-    "test:ci": "jest --runInBand --ci --coverage --coverageDirectory=coverage",
     "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod/index.js",
     "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev/index.js",
     "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
