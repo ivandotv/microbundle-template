@@ -8,10 +8,7 @@
  *
  * @beta
  */
-export function demo(): void {
-  if (__DEV__) {
-    console.log("this should only log in development build")
-  }
-  console.log(__VERSION__)
+export function demo(): string {
+  return "hello world!"
 }
 demo()
