@@ -10,7 +10,9 @@
       "request": "launch",
       "program": "${workspaceFolder}/src/index.ts",
       // "preLaunchTask": "npm: build:cjs",
-      "outFiles": ["${workspaceFolder}/dist/cjs/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/dist/cjs/**/*.js"
+      ],
       "smartStep": true,
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
@@ -18,26 +20,27 @@
       ]
     },
     {
-      "name": "Current Test File",
+      "name": "Debug Current Test File",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/${relativeFileDirname}",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": [
-        "jest",
-        "${file}",
-        "--no-cache",
-        "--watchAll=false",
-        "--runInBand"
-      ],
-      "env": { "JEST_DEBUG": "true" },
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "smartStep": true,
+      "autoAttachChildProcesses": true,
       "skipFiles": [
-        "${workspaceFolder}/node_modules/**/*.js",
-        "<node_internals>/**/*.js"
-      ]
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ],
+      "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "${relativeFile}"
+      ],
+      "env": {
+        "VITEST_DEBUG": "true"
+      },
+      "runtimeArgs": [
+        "--no-lazy"
+      ],
+      "smartStep": true,
+      "console": "integratedTerminal"
     }
   ]
 }
