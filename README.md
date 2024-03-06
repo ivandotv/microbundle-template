@@ -7,7 +7,6 @@ Opinionated template repository for creating Javascript libraries with Typescrip
 - [Motivation](#motivation)
 - [Getting Started](#getting-started)
 - [Compiling Typescript via Microbundle](#compiling-typescript-via-microbundle)
-- [Development code](#development-code)
 - [Testing via Vitest](#testing-via-vitest)
 - [Linting and Formatting code via Biome](#linting-via-biome)
 - [Continuous Integration](#continuous-integration)
@@ -41,43 +40,6 @@ Microbundle creates three bundles, `modern (es6)` `cjs` and `umd`. Also in the `
 - `import` - es6 (module) build of the library
 - `require` - Commonjs build of the library
 
-## Development code
-
-While in the development you have access to a few expressions, that will later be transformed via microbundle.
-
-`__DEV__` expression: Write code that will be stripped out from the production build.
-
-this code:
-
-```js
-if (__DEV__) {
-  //dev only code
-}
-```
-
-will generate:
-
-```js
-if (process.env.NODE_ENV !== 'production') {
-  //dev only code
-}
-```
-
-Which will later (in `production` mode) be resolved to:
-
-```js
-if (false) {
-  //dev only code
-}
-```
-
-And it will be removed from your `production` build.
-
-There are also some other expressions that you can use:
-
-- `__VERSION__` is replaced with the environment variable `PKG_VERSION` or with `package.json` `version` field.
-- `__COMMIT_SHA__` is replaced with the short version of the git commit SHA from the HEAD.
-- `__BUILD_DATE__` is replaced with the date of the commit from the HEAD.
 
 ## Testing via Vitest
 
