@@ -10,16 +10,23 @@ export default defineConfig({
   test: {
     setupFiles: "./vitestSetup.ts",
     coverage: {
+      // thresholds: {
+      //   branches: 90,
+      //   lines: 90,
+      //   functions: 90,
+      //   statements: 90,
+      // },
       provider: "v8",
-      reporter: ["text", "html", "clover", "json"],
+      reporter: ["text", "html", "json", "lcov"],
+      include: ["src/**/*.ts"],
       exclude: [
         ...(configDefaults.coverage.exclude
           ? configDefaults.coverage.exclude
           : []),
-        "typedoc.cjs",
         "src/types-internal.ts",
         "src/types.ts",
-        "src/index.ts",
+        "src/__tests__/**",
+        // "src/index.ts",
       ],
     },
   },
