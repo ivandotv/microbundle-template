@@ -1,4 +1,7 @@
 name: Test
+concurrency:
+  group: tests-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
 on:
   push:
     branches:
@@ -54,10 +57,18 @@ jobs:
 
       - name: Run tests
         run: |
-          pnpm test
+          pnpm test:ci
         env:
           CI: true
 
+      - name: Generate Code Coverage report
+        id: code-coverage
+        uses: barecheck/code-coverage-action@v1
+        with:
+          lcov-file: "./coverage/lcov.info"
+          send-summary-comment: true
+          show-annotations: "warning"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Consume changesets'
         if: github.event_name == 'push' && github.repository == 'ivandotv/untilted' && matrix.node == 21 && github.ref == 'refs/heads/main'
         uses: changesets/action@v1
