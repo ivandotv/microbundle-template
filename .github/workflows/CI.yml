@@ -64,6 +64,7 @@ jobs:
       - name: Generate Code Coverage report
         id: code-coverage
         uses: barecheck/code-coverage-action@v1
+        # you can setup code coverage comparison with main branch
         with:
           lcov-file: "./coverage/lcov.info"
           send-summary-comment: true
