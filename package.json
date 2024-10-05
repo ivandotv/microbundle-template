@@ -35,7 +35,8 @@
     "gen:docs": "rm -rf ./docs/api && typedoc --options typedoc.cjs",
     "prepublishOnly": "pnpm build",
     "prepare": "lefthook install",
-    "release": "pnpm run prepublishOnly && pnpm changeset publish"
+    "release": "pnpm run prepublishOnly && pnpm changeset publish",
+    "bump:version": "pnpm changeset version && pnpm biome format --fix"
   },
   "repository": {
     "type": "git",

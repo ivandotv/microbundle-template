@@ -76,6 +76,7 @@ jobs:
         id: 'changesets'
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          version: pnpm bump:version
           publish: pnpm release
           commit: version bump
           title: Next release
