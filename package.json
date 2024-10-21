@@ -54,7 +54,7 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.24.7",
-    "@biomejs/biome": "1.9.3",
+    "@biomejs/biome": "1.9.4",
     "@changesets/cli": "^2.27.8",
     "@types/node": "^22.7.4",
     "@vitest/coverage-v8": "^2.1.1",
